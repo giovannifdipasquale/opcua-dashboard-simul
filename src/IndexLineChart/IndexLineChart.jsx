@@ -1,7 +1,7 @@
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from 'recharts';
 import { RechartsDevtools } from '@recharts/devtools';
 import { useEffect, useState } from 'react';
-
+import { useWsData } from '../hooks/useWsData';
 // #region Sample data
 const data = [
     {
@@ -45,23 +45,30 @@ const data = [
 // #endregion
 
 export default function IndexLineChart() {
+    const [chartHistory, setChartHistory] = useState([]);
 
-    const [currentTime, setCurrentTime] = useState([]);
+    const wsData = useWsData('ws://localhost:1880/ws/telemetry');
     useEffect(() => {
-        const intervalTenSeconds = setInterval(() => {
-            setCurrentTime(new Date().toLocaleTimeString());
-            console.log(currentTime);
-        }, 10000);
-        return () => clearInterval(intervalTenSeconds);
-    }, []);
+        if (wsData?.sensor === 'Sinusoid') {
+            setChartHistory(prev => {
+                const newData = [
+                    ...prev,
+                    { time: new Date().toLocaleTimeString(), value: wsData.value }
+                ];
+                // Keep only the last 20 points
+                return newData.slice(-20);
+            });
+        }
+    }, [wsData]);
+
     return (
-        <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={data}>
+        <LineChart style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} responsive data={chartHistory} >
             <CartesianGrid stroke="#000000" strokeDasharray="5 5" />
-            <XAxis dataKey="name" stroke="#000000" />
+            <XAxis dataKey="time" stroke="#000000" />
             <YAxis width="auto" stroke="#000000" />
             <Line
                 type="monotone"
-                dataKey="uv"
+                dataKey="value"
                 stroke="#000000"
                 dot={{
                     fill: '#000000',
