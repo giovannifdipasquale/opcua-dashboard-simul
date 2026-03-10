@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import IndexLineChart from './IndexLineChart/IndexLineChart'
+import StepChart from './StepChart/StepChart'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -13,9 +14,9 @@ function App() {
         <div className="col-span-6">
           <IndexLineChart />
         </div>
-        <div className="col-span-6">6</div>
-        <div className="col-span-6">6</div>
-        <div className="col-span-6">6</div>
+        <div className="col-span-6">
+          <StepChart />
+        </div>
       </div>
     </>
   )
