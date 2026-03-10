@@ -2,8 +2,7 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import IndexLineChart from './IndexLineChart/IndexLineChart'
-import StepChart from './StepChart/StepChart'
+import TelemetryChart from './components/TelemetryChart'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,10 +11,10 @@ function App() {
     <>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-6">
-          <IndexLineChart />
+          <TelemetryChart sensorName="Sinusoid" type="monotone" color="#000000" />
         </div>
         <div className="col-span-6">
-          <StepChart />
+          <TelemetryChart sensorName="Square" type="step" color="#d2e313" />
         </div>
       </div>
     </>
