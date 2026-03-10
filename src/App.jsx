@@ -34,7 +34,7 @@ function App() {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-4">
+      <div className="grid grid-cols-12 gap-2 px-48">
         <div className="col-span-12 md:col-span-6">
           <TelemetryChart clearTrigger={clearTrigger} wsData={wsData} sensorName="Sinusoid" type="monotone" color="#253031" fill="#d2e313" chartType="line" />
         </div>

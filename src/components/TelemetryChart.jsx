@@ -56,7 +56,7 @@ export default function TelemetryChart({
     return (
         <>
             <h1 className="text-3xl font-bold text-center p-2">{sensorName}</h1>
-            <div style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} >
+            <div style={{ width: '75%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} >
                 <ResponsiveContainer>
                     <ChartComponent data={chartHistory} >
                         <CartesianGrid stroke="#aaa" strokeDasharray="3 3" />
