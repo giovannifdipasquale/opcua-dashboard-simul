@@ -4,6 +4,13 @@ A frontend dashboard built with React (Vite) and Tailwind CSS to visualize real-
 
 This project connects to a local Node-RED flow functioning as a dashboard to visualize OPCUA data,  subscribing to multiple simulated data streams (Sinusoid, Square wave, Random noise, and Counter).
 
+## Demo
+
+
+
+https://github.com/user-attachments/assets/eff307bd-ae47-4067-9988-32f500712bac
+
+
 ## Features & Implementation
 
 ### 0. Node-RED Flow (OPC-UA to WebSocket)
@@ -32,13 +39,6 @@ This project connects to a local Node-RED flow functioning as a dashboard to vis
 ### 5. Styling
 - Built using a custom 3-color palette integrated into basic CSS variables (`--bg-color`, `--text-color`, `--accent-color`).
 - Utilized Tailwind CSS grid breakpoints (`col-span-12 md:col-span-6`) to ensure the dashboard is mobile-responsive.
-
-## Demo
-
-
-
-https://github.com/user-attachments/assets/eff307bd-ae47-4067-9988-32f500712bac
-
 
 
 ## Setup Instructions
