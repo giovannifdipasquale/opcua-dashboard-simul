@@ -35,7 +35,11 @@ This project connects to a local Node-RED flow functioning as a dashboard to vis
 
 ## Demo
 
-[Add your demo video or GIF here]
+
+
+https://github.com/user-attachments/assets/eff307bd-ae47-4067-9988-32f500712bac
+
+
 
 ## Setup Instructions
 
