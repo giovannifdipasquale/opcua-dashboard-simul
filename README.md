@@ -33,11 +33,18 @@ This project connects to a local Node-RED flow functioning as a dashboard to vis
 - Built using a custom 3-color palette integrated into basic CSS variables (`--bg-color`, `--text-color`, `--accent-color`).
 - Utilized Tailwind CSS grid breakpoints (`col-span-12 md:col-span-6`) to ensure the dashboard is mobile-responsive.
 
+## Demo
+
+[Add your demo video or GIF here]
+
 ## Setup Instructions
 
 This frontend requires a running Node-RED instance broadcasting JSON payloads over a local WebSocket route at `ws://localhost:1880/ws/telemetry`.
-```
-Feel free to copy-paste this Node-RED flow to test the React app
+
+<details>
+<summary>Click to expand Node-RED Flow JSON</summary>
+
+```json
 [
     {
         "id": "7748fb34bf7ce280",
@@ -265,8 +272,9 @@ Feel free to copy-paste this Node-RED flow to test the React app
         }
     }
 ]
-
 ```
+
+</details>`
 
 1. Clone the repository
 2. Run `npm install`

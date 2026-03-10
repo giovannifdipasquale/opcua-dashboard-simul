@@ -17,7 +17,7 @@ function App() {
     return () => clearInterval(timer);
   }, []);
 
-  const { data: wsData, status: wsStatus } = useWsData('ws://localhost:1880/ws/telemetry', isStreaming);
+  const { status: wsStatus } = useWsData('ws://localhost:1880/ws/telemetry', isStreaming);
 
   return (
     <>
@@ -36,16 +36,16 @@ function App() {
 
       <div className="grid grid-cols-12 gap-2 px-48">
         <div className="col-span-12 md:col-span-6">
-          <TelemetryChart clearTrigger={clearTrigger} wsData={wsData} sensorName="Sinusoid" type="monotone" color="#253031" fill="#d2e313" chartType="line" />
+          <TelemetryChart isStreaming={isStreaming} clearTrigger={clearTrigger} sensorName="Sinusoid" type="monotone" color="#253031" fill="#d2e313" chartType="line" />
         </div>
         <div className="col-span-12 md:col-span-6">
-          <TelemetryChart clearTrigger={clearTrigger} wsData={wsData} sensorName="Square" type="step" color="#d2e313" fill="#253031" chartType="line" />
+          <TelemetryChart isStreaming={isStreaming} clearTrigger={clearTrigger} sensorName="Square" type="step" color="#253031" fill="#d2e313" chartType="line" />
         </div>
         <div className="col-span-12 md:col-span-6">
-          <TelemetryChart clearTrigger={clearTrigger} wsData={wsData} sensorName="Random" type="area" color="#253031" fill="#d2e313" chartType="area" />
+          <TelemetryChart isStreaming={isStreaming} clearTrigger={clearTrigger} sensorName="Random" type="area" color="#253031" fill="#d2e313" chartType="area" />
         </div>
         <div className="col-span-12 md:col-span-6">
-          <TelemetryChart clearTrigger={clearTrigger} wsData={wsData} sensorName="Counter" type="area" color="#253031" fill="#d2e313" chartType="bar" />
+          <TelemetryChart isStreaming={isStreaming} clearTrigger={clearTrigger} sensorName="Counter" type="area" color="#253031" fill="#d2e313" chartType="bar" />
         </div>
       </div>
 
