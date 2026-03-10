@@ -9,7 +9,8 @@ export default function TelemetryChart({
     color = '#ebe66a',
     fill = '#ebe66a',
     maxPoints = 20,
-    chartType = 'line'
+    chartType = 'line',
+    clearTrigger = 0
 }) {
     const [chartHistory, setChartHistory] = useState([]);
 
@@ -28,6 +29,12 @@ export default function TelemetryChart({
             });
         }
     }, [wsData, sensorName, maxPoints]);
+
+    useEffect(() => {
+        if (clearTrigger > 0) {
+            setChartHistory([]);
+        }
+    }, [clearTrigger]);
 
     const mapChartType = {
         line: {
