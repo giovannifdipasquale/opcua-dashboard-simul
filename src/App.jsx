@@ -9,20 +9,29 @@ function App() {
 
   const wsData = useWsData('ws://localhost:1880/ws/telemetry');
   console.log(wsData);
+
   return (
     <>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-6">
-          <TelemetryChart sensorName="Sinusoid" type="monotone" color="#000000" chartType="line" />
+          <TelemetryChart wsData={wsData} sensorName="Sinusoid" type="monotone" color="#000000" chartType="line" />
         </div>
         <div className="col-span-6">
-          <TelemetryChart sensorName="Square" type="step" color="#d2e313" chartType="line" />
+          <TelemetryChart wsData={wsData} sensorName="Square" type="step" color="#d2e313" chartType="line" />
         </div>
         <div className="col-span-6">
-          <TelemetryChart sensorName="Random" type="area" color="#e39a13ff" chartType="area" />
+          <TelemetryChart wsData={wsData} sensorName="Random" type="area" color="#e39a13ff" chartType="area" />
         </div>
         <div className="col-span-6">
-          <TelemetryChart sensorName="Counter" type="area" color="#e39a13ff" chartType="bar" />
+          <TelemetryChart wsData={wsData} sensorName="Counter" type="area" color="#e39a13ff" chartType="bar" />
+        </div>
+      </div>
+      <div className="grid grid-cols-12 gap-4">
+        <div className="col-span-6">
+          <button>Start</button>
+        </div>
+        <div className="col-span-6">
+          <button>Stop</button>
         </div>
       </div>
     </>

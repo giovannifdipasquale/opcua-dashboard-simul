@@ -1,18 +1,16 @@
 import { CartesianGrid, Line, LineChart, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { RechartsDevtools } from '@recharts/devtools';
 import { useEffect, useState } from 'react';
-import { useWsData } from '../hooks/useWsData';
 
 export default function TelemetryChart({
+    wsData,
     sensorName,
     type = 'monotone',
     color = '#8884d8',
     maxPoints = 20,
-    url = 'ws://localhost:1880/ws/telemetry',
     chartType = 'line'
 }) {
     const [chartHistory, setChartHistory] = useState([]);
-    const wsData = useWsData(url);
 
     useEffect(() => {
         if (wsData?.sensor === sensorName) {
