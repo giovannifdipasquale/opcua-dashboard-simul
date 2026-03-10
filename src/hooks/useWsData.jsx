@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
 
 
-export function useWsData(url) {
+export function useWsData(url, isEnabled = true) {
     const [data, setData] = useState(null);
 
     useEffect(() => {
+        if (!isEnabled) return;
+
         const ws = new WebSocket(url);
 
         ws.onmessage = (event) => {
@@ -17,7 +19,7 @@ export function useWsData(url) {
         };
 
         return () => ws.close();
-    }, [url]);
+    }, [url, isEnabled]);
 
     return data;
 }

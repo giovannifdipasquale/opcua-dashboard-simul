@@ -6,8 +6,9 @@ import TelemetryChart from './components/TelemetryChart'
 import { useWsData } from './hooks/useWsData';
 
 function App() {
+  const [isStreaming, setIsStreaming] = useState(true);
 
-  const wsData = useWsData('ws://localhost:1880/ws/telemetry');
+  const wsData = useWsData('ws://localhost:1880/ws/telemetry', isStreaming);
   console.log(wsData);
 
   return (
@@ -26,13 +27,24 @@ function App() {
           <TelemetryChart wsData={wsData} sensorName="Counter" type="area" color="#e39a13ff" chartType="bar" />
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-4">
-        <div className="col-span-6">
-          <button>Start</button>
-        </div>
-        <div className="col-span-6">
-          <button>Stop</button>
-        </div>
+
+      <div className="grid grid-cols-12 gap-4 mt-6">
+        <button
+          onClick={() => setIsStreaming(true)}
+          disabled={isStreaming}
+          className={`col-span-6 px-6 py-2 text-white font-medium rounded-md transition-colors shadow-sm ${isStreaming ? 'bg-gray-400 cursor-not-allowed' : 'bg-emerald-500 hover:bg-emerald-600'
+            }`}
+        >
+          Start
+        </button>
+        <button
+          onClick={() => setIsStreaming(false)}
+          disabled={!isStreaming}
+          className={`col-span-6 px-6 py-2 text-white font-medium rounded-md transition-colors shadow-sm ${!isStreaming ? 'bg-gray-400 cursor-not-allowed' : 'bg-rose-500 hover:bg-rose-600'
+            }`}
+        >
+          Stop
+        </button>
       </div>
     </>
   )
