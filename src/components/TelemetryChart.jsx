@@ -6,7 +6,8 @@ export default function TelemetryChart({
     wsData,
     sensorName,
     type = 'monotone',
-    color = '#8884d8',
+    color = '#ebe66a',
+    fill = '#ebe66a',
     maxPoints = 20,
     chartType = 'line'
 }) {
@@ -46,24 +47,28 @@ export default function TelemetryChart({
     const ChartComponent = mapChartType[chartType].component;
     const DataComponent = mapChartType[chartType].data;
     return (
-        <div style={{ width: '100%', height: 300 }}>
-            <ResponsiveContainer>
-                <ChartComponent data={chartHistory} >
-                    <CartesianGrid stroke="#aaa" strokeDasharray="3 3" />
-                    <XAxis dataKey="time" stroke="#666" fontSize={12} />
-                    <YAxis stroke="#666" fontSize={12} />
+        <>
+            <h1 className="text-3xl font-bold text-center p-2">{sensorName}</h1>
+            <div style={{ width: '100%', aspectRatio: 1.618, maxWidth: 800, margin: 'auto' }} >
+                <ResponsiveContainer>
+                    <ChartComponent data={chartHistory} >
+                        <CartesianGrid stroke="#aaa" strokeDasharray="3 3" />
+                        <XAxis dataKey="time" stroke="#666" fontSize={12} />
+                        <YAxis stroke="#666" fontSize={12} />
 
-                    <DataComponent
-                        type={type}
-                        dataKey="value"
-                        stroke={color}
-                        strokeWidth={2}
-                        isAnimationActive={false}
-                    />
+                        <DataComponent
+                            type={type}
+                            dataKey="value"
+                            stroke={color}
+                            fill={fill}
+                            strokeWidth={2}
+                            isAnimationActive={false}
+                        />
 
-                    <RechartsDevtools />
-                </ChartComponent>
-            </ResponsiveContainer>
-        </div >
+                        <RechartsDevtools />
+                    </ChartComponent>
+                </ResponsiveContainer>
+            </div >
+        </>
     );
 }
