@@ -21,6 +21,9 @@ function App() {
         <div className="col-span-6">
           <TelemetryChart sensorName="Random" type="area" color="#e39a13ff" chartType="area" />
         </div>
+        <div className="col-span-6">
+          <TelemetryChart sensorName="Counter" type="area" color="#e39a13ff" chartType="bar" />
+        </div>
       </div>
     </>
   )

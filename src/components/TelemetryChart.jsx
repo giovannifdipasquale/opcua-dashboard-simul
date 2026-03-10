@@ -1,4 +1,4 @@
-import { CartesianGrid, Line, LineChart, AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
+import { CartesianGrid, Line, LineChart, AreaChart, Area, BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import { RechartsDevtools } from '@recharts/devtools';
 import { useEffect, useState } from 'react';
 import { useWsData } from '../hooks/useWsData';
@@ -30,9 +30,23 @@ export default function TelemetryChart({
         }
     }, [wsData, sensorName, maxPoints]);
 
+    const mapChartType = {
+        line: {
+            component: LineChart,
+            data: Line
+        },
+        area: {
+            component: AreaChart,
+            data: Area
+        },
+        bar: {
+            component: BarChart,
+            data: Bar
+        }
+    };
     // Dynamic Chart Type
-    const ChartComponent = chartType === 'area' ? AreaChart : LineChart;
-    const DataComponent = chartType === 'area' ? Area : Line;
+    const ChartComponent = mapChartType[chartType].component;
+    const DataComponent = mapChartType[chartType].data;
     return (
         <div style={{ width: '100%', height: 300 }}>
             <ResponsiveContainer>
